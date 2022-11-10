@@ -8,8 +8,7 @@ let package = Package(
         .library(
             name: "PythonKit",
             targets: ["PythonKit"]
-        ),
-        .package(url: "https://github.com/pvieito/PythonKit.git", .branch("master")),
+        )
     ],
     targets: [
         .target(
