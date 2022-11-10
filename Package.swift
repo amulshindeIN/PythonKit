@@ -19,5 +19,6 @@ let package = Package(
             name: "PythonKitTests",
             dependencies: ["PythonKit"]
         ),
+        .package(url: "https://github.com/pvieito/PythonKit.git", .branch("master")),
     ]
 )
