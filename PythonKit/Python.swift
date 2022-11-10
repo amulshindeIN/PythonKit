@@ -679,19 +679,19 @@ public struct PythonInterface {
         builtins = PythonObject(PyEval_GetBuiltins())
         
         // Runtime Fixes:
-        PyRun_SimpleString(
+        PyRun_SimpleString("""
             import sys
             import os
             
-            //# Some Python modules expect to have at least one argument in `sys.argv`.
+            # Some Python modules expect to have at least one argument in `sys.argv`.
             sys.argv = [""]
 
-            //# Some Python modules require `sys.executable` to return the path
-            //# to the Python interpreter executable. In Darwin, Python 3 returns the
-            //# main process executable path instead.
+            # Some Python modules require `sys.executable` to return the path
+            # to the Python interpreter executable. In Darwin, Python 3 returns the
+            # main process executable path instead.
             if sys.version_info.major == 3 and sys.platform == "darwin":
                 sys.executable = os.path.join(sys.exec_prefix, "bin", "python3")
-            )
+            """)
     }
     
     public func attemptImport(_ name: String) throws -> PythonObject {
